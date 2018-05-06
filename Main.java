@@ -1,9 +1,16 @@
-class Main
+public class Main
 {
 	public static void main(String[] args)
 	{
 		Kermis k = new Kermis();
-		k.run();
+		try 
+		{
+			k.run();
+		}
+		catch (BadInputException e) 
+		{
+			System.out.println("Bad Input");
+		}
 	}
-	
+
 }

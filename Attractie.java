@@ -1,8 +1,10 @@
 public abstract class Attractie
 {
 	private final String naam;
-	private int prijs, omzet;
-	private static int omzetAttracties = 0;
+	protected int prijs;
+	protected int omzet;
+	protected int aantalKaartjes;
+	public static int omzetAttracties = 0, kaartjesTotaal = 0;
 	
 	public abstract void draaien();
 	
@@ -11,6 +13,7 @@ public abstract class Attractie
 		this.naam = naam;
 		this.prijs = prijs;
 		this.omzet = 0;
+		this.aantalKaartjes = 0;
 	}
 	
 	public String getNaam()
@@ -18,21 +21,23 @@ public abstract class Attractie
 		return this.naam;
 	}
 	
-	public int getOmzet()
+	public double getOmzet()
 	{
 		return this.omzet;
 	}
-		
+	
+	public int getAantalKaartjes()
+	{
+		return this.aantalKaartjes;
+	}
+	
 	public void setPrijs(int prijs) throws PrijsNegatiefException
 	{
 		if(prijs <= 0)
 			throw new PrijsNegatiefException();
 		this.prijs = prijs;
 	}
-	
-	
 }
-
 
 class BotsAuto extends Attractie
 {
@@ -44,7 +49,12 @@ class BotsAuto extends Attractie
 	
 	public void draaien()
 	{
-		System.out.println("BOTSBOTSBOTS");
+		System.out.println("BOTSAUTO");
+		Attractie.omzetAttracties += this.prijs;
+		this.omzet += this.prijs;
+		Kermis.omzetTotaal += this.prijs;
+		++this.aantalKaartjes;
+		++Attractie.kaartjesTotaal;
 	}
 }
 
@@ -52,12 +62,17 @@ class Spin extends Attractie
 {
 	public Spin(String naam, int prijs)
 	{
-		super(naam, prijs);
+		super(naam, prijs); 
 	}
 	
 	public void draaien()
 	{
-		System.out.println("SPINSPINSPIN");
+		System.out.println("SPIN");
+		Attractie.omzetAttracties += this.prijs;
+		this.omzet += this.prijs;
+		Kermis.omzetTotaal += this.prijs;
+		++this.aantalKaartjes;
+		++Attractie.kaartjesTotaal;
 	}	
 }
 
@@ -70,7 +85,12 @@ class SpiegelPaleis extends Attractie
 	
 	public void draaien()
 	{
-		System.out.println("REFLECT");
+		System.out.println("SPIEGEL");
+		Attractie.omzetAttracties += this.prijs;
+		this.omzet += this.prijs;
+		Kermis.omzetTotaal += this.prijs;
+		++this.aantalKaartjes;
+		++Attractie.kaartjesTotaal;
 	}	
 }
 
@@ -83,7 +103,12 @@ class SpookHuis extends Attractie
 	
 	public void draaien()
 	{
-		System.out.println("SPOOPY");
+		System.out.println("SPOOKY");
+		Attractie.omzetAttracties += this.prijs;
+		this.omzet += this.prijs;
+		Kermis.omzetTotaal += this.prijs;
+		++this.aantalKaartjes;
+		++Attractie.kaartjesTotaal;
 	}	
 }
 
@@ -96,7 +121,12 @@ class Hawaii extends Attractie
 	
 	public void draaien()
 	{
-		System.out.println("SPINSPINSPIN");
+		System.out.println("HAWAII");
+		Attractie.omzetAttracties += this.prijs;
+		this.omzet += this.prijs;
+		Kermis.omzetTotaal += this.prijs;
+		++this.aantalKaartjes;
+		++Attractie.kaartjesTotaal;
 	}	
 }
 
@@ -109,11 +139,11 @@ class LadderKlimmen extends Attractie
 	
 	public void draaien()
 	{
-		System.out.println("SPINSPINSPIN");
+		System.out.println("LADDER");
+		Attractie.omzetAttracties += this.prijs;
+		this.omzet += this.prijs;
+		Kermis.omzetTotaal += this.prijs;
+		++this.aantalKaartjes;
+		++Attractie.kaartjesTotaal;
 	}	
-}
-
-class PrijsNegatiefException extends Exception
-{
-	
 }
